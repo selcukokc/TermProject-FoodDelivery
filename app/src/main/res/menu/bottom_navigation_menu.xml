@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homepageFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Anasayfa" />
+
+    <item
+        android:id="@+id/categoriesFragment"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="Kategoriler" />
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Ara"/>
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_baseline_shopping_basket_24"
+        android:title="Sepetim"/>
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profilim"/>
+</menu>

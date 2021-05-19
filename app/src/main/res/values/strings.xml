@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FoodDelivery</string>
+
+    <string-array name="sehirler_array">
+        <item>İstanbul</item>
+        <item>Ankara</item>
+        <item>İzmir</item>
+        <item>Bursa</item>
+        <item>Adana</item>
+        <item>Konya</item>
+        <item>Gaziantep</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

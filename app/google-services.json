@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "257082094813",
+    "project_id": "termproject-15aed",
+    "storage_bucket": "termproject-15aed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257082094813:android:92b9b62dda6035830ad734",
+        "android_client_info": {
+          "package_name": "com.selcukokc.fooddelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257082094813-aa5flhtv3jboar9nq3i69n4p5cs3pvb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWi1jfWaMnaFpmaHAzBOukYZ48jkzmMMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257082094813-aa5flhtv3jboar9nq3i69n4p5cs3pvb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
