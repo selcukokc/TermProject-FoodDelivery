@@ -29,8 +29,7 @@ class LoginFragment : BaseFragment() {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginViewModel.userMutableLiveData.observe(this, Observer { firebaseUser ->
 
-            if(firebaseUser!=null){         //firebase user null olarak geliyor!
-
+            if(firebaseUser!=null){
                 view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_homepageFragment) }
                 Toast.makeText(context, "Giriş Yapıldı.", Toast.LENGTH_SHORT).show()
             }

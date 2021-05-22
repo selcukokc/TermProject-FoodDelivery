@@ -26,9 +26,8 @@ class RegisterFragment : BaseFragment() {
 
         registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         registerViewModel.userMutableLiveData.observe(this, Observer { firebaseUser ->
-            if(firebaseUser != null){  //FirebaseUser null olarak geliyor.
+            if(firebaseUser != null){
 
-                Log.e("asdas","firebaseUser null degil")
                 registerViewModel.userinfoMutableLiveData.observe(this, Observer { infoArray->
 
                     if (infoArray != null){
