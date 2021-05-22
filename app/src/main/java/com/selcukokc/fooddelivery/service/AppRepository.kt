@@ -28,19 +28,29 @@ class AppRepository(val application: Application){
     private var loggedOutMutableLiveData: MutableLiveData<Boolean>
     private var firebaseAuth: FirebaseAuth
     private var db: FirebaseFirestore
-
-
+    private var restaurantUserMutableLiveData: MutableLiveData<FirebaseUser>
+    private var restaurantFirebaseAuth: FirebaseAuth
+    private var restaurantLoggedIn: MutableLiveData<Boolean>
 
     init{
         userMutableLiveData = MutableLiveData()
         userinfoMutableLiveData = MutableLiveData()
         loggedOutMutableLiveData = MutableLiveData()
         firebaseAuth = FirebaseAuth.getInstance()
+
+        restaurantUserMutableLiveData = MutableLiveData()
+        restaurantFirebaseAuth = FirebaseAuth.getInstance()
+        restaurantLoggedIn = MutableLiveData()
         db = FirebaseFirestore.getInstance()
 
         if(firebaseAuth.currentUser != null){
             userMutableLiveData.postValue(firebaseAuth.currentUser)
             loggedOutMutableLiveData.postValue(false)
+        }
+
+        if(restaurantFirebaseAuth.currentUser != null){
+            restaurantUserMutableLiveData.postValue(firebaseAuth.currentUser)
+            restaurantLoggedIn.postValue(false)
         }
     }
 
@@ -132,6 +142,10 @@ class AppRepository(val application: Application){
 
     fun getUserInfoMutableLiveData(): MutableLiveData<Array<String>>{
         return userinfoMutableLiveData
+    }
+
+    fun getRestaurantUserMutableLiveData(): MutableLiveData<FirebaseUser>{
+        return restaurantUserMutableLiveData
     }
 
 }
