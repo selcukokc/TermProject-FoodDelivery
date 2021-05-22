@@ -3,8 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/itemHomepage"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="item2"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/itemMenus"
-        android:title="Menuler"
+        android:title="Menüler"
         app:showAsAction="always" />
     <item
         android:id="@+id/itemProfile"

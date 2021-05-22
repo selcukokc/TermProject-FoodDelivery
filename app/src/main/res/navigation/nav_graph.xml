@@ -94,5 +94,45 @@
         android:id="@+id/restaurantLoginFragment"
         android:name="com.selcukokc.fooddelivery.view.restaurantLoginFragment"
         android:label="Restoran Giriş"
-        tools:layout="@layout/fragment_restaurant_login" />
+        tools:layout="@layout/fragment_restaurant_login" >
+        <action
+            android:id="@+id/action_restaurantLoginFragment_to_restaurantPanelFragment"
+            app:destination="@id/restaurantPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantPanelFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestaurantPanelFragment"
+        android:label="fragment_restaurant_panel"
+        tools:layout="@layout/fragment_restaurant_panel" >
+        <action
+            android:id="@+id/action_restaurantPanelFragment_to_restourantMenuPanelFragment"
+            app:destination="@id/restourantMenuPanelFragment" />
+        <action
+            android:id="@+id/action_restaurantPanelFragment_to_restaurantProfileFragment"
+            app:destination="@id/restaurantProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restourantMenuPanelFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestourantMenuPanelFragment"
+        android:label="fragment_restourant_menu_panel"
+        tools:layout="@layout/fragment_restourant_menu_panel" >
+        <action
+            android:id="@+id/action_restourantMenuPanelFragment_to_restaurantProfileFragment"
+            app:destination="@id/restaurantProfileFragment" />
+        <action
+            android:id="@+id/action_restourantMenuPanelFragment_to_restaurantPanelFragment"
+            app:destination="@id/restaurantPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantProfileFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestaurantProfileFragment"
+        android:label="fragment_restaurant_profile"
+        tools:layout="@layout/fragment_restaurant_profile" >
+        <action
+            android:id="@+id/action_restaurantProfileFragment_to_restourantMenuPanelFragment"
+            app:destination="@id/restourantMenuPanelFragment" />
+        <action
+            android:id="@+id/action_restaurantProfileFragment_to_restaurantPanelFragment"
+            app:destination="@id/restaurantPanelFragment" />
+    </fragment>
 </navigation>
