@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantLoginFragment"
-        android:name="com.selcukokc.fooddelivery.view.restaurantLoginFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestaurantLoginFragment"
         android:label="Restoran Giriş"
         tools:layout="@layout/fragment_restaurant_login" >
         <action

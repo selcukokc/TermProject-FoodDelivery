@@ -17,8 +17,8 @@ class RestaurantLoginViewModel(application: Application) : AndroidViewModel(appl
     }
 
 
-    fun login(email: String, password: String){
-        appRepository.login(email, password)
+    fun restaurantLogin(email: String, password: String){
+        appRepository.restaurantLogin(email, password)
     }
 
 }

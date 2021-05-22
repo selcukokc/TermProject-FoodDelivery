@@ -126,6 +126,23 @@ class AppRepository(val application: Application){
 
               })
 
+    }
+
+    fun restaurantLogin(email: String, password: String){
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(ContextCompat.getMainExecutor(application),
+            {
+                if (it.isSuccessful) {
+                    restaurantUserMutableLiveData.postValue(firebaseAuth.currentUser)
+
+                } else {
+                    Toast.makeText(
+                        application,
+                        "Giriş başarısız oldu. " + it.exception?.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            })
 
     }
 
