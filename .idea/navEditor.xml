@@ -84,8 +84,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-3701" />
-                            <option name="y" value="-509" />
+                            <option name="x" value="-3816" />
+                            <option name="y" value="-536" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -122,8 +122,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-3283" />
-                            <option name="y" value="-517" />
+                            <option name="x" value="-3443" />
+                            <option name="y" value="-550" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -167,6 +167,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="restaurantLoginFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-3031" />
+                            <option name="y" value="-593" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

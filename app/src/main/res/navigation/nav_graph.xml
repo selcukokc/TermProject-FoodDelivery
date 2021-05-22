@@ -86,5 +86,13 @@
         <action
             android:id="@+id/action_firstFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_restaurantLoginFragment"
+            app:destination="@id/restaurantLoginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/restaurantLoginFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurantLoginFragment"
+        android:label="Restoran Giriş"
+        tools:layout="@layout/fragment_restaurant_login" />
 </navigation>

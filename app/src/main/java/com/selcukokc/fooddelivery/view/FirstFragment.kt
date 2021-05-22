@@ -31,7 +31,10 @@ class FirstFragment : BaseFragment() {
 
         user_option.setOnClickListener {
             Navigation.findNavController(it).navigate(FirstFragmentDirections.actionFirstFragmentToLoginFragment())
+        }
 
+        restaurant_option.setOnClickListener {
+            Navigation.findNavController(it).navigate(FirstFragmentDirections.actionFirstFragmentToRestaurantLoginFragment())
         }
 
     }
