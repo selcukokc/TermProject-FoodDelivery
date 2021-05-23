@@ -102,8 +102,8 @@
     <fragment
         android:id="@+id/restaurantPanelFragment"
         android:name="com.selcukokc.fooddelivery.view.RestaurantPanelFragment"
-        android:label="fragment_restaurant_panel"
-        tools:layout="@layout/fragment_restaurant_panel" >
+        android:label="Anasayfa"
+        tools:layout="@layout/fragment_restaurant_panel">
         <action
             android:id="@+id/action_restaurantPanelFragment_to_restourantMenuPanelFragment"
             app:destination="@id/restourantMenuPanelFragment" />
@@ -114,13 +114,13 @@
             android:id="@+id/action_restaurantPanelFragment_to_restaurantLoginFragment"
             app:destination="@id/restaurantLoginFragment"
             app:popUpTo="@id/restaurantLoginFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/restourantMenuPanelFragment"
         android:name="com.selcukokc.fooddelivery.view.RestaurantMenuPanelFragment"
-        android:label="fragment_restourant_menu_panel"
-        tools:layout="@layout/fragment_restourant_menu_panel" >
+        android:label="Menuler"
+        tools:layout="@layout/fragment_restaurant_menu_panel">
         <action
             android:id="@+id/action_restourantMenuPanelFragment_to_restaurantProfileFragment"
             app:destination="@id/restaurantProfileFragment" />
@@ -131,8 +131,8 @@
     <fragment
         android:id="@+id/restaurantProfileFragment"
         android:name="com.selcukokc.fooddelivery.view.RestaurantProfileFragment"
-        android:label="fragment_restaurant_profile"
-        tools:layout="@layout/fragment_restaurant_profile" >
+        android:label="Profil"
+        tools:layout="@layout/fragment_restaurant_profile">
         <action
             android:id="@+id/action_restaurantProfileFragment_to_restourantMenuPanelFragment"
             app:destination="@id/restourantMenuPanelFragment" />
