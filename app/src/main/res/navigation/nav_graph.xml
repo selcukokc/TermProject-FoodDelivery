@@ -110,10 +110,15 @@
         <action
             android:id="@+id/action_restaurantPanelFragment_to_restaurantProfileFragment"
             app:destination="@id/restaurantProfileFragment" />
+        <action
+            android:id="@+id/action_restaurantPanelFragment_to_restaurantLoginFragment"
+            app:destination="@id/restaurantLoginFragment"
+            app:popUpTo="@id/restaurantLoginFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/restourantMenuPanelFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestourantMenuPanelFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestaurantMenuPanelFragment"
         android:label="fragment_restourant_menu_panel"
         tools:layout="@layout/fragment_restourant_menu_panel" >
         <action
