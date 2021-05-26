@@ -1,25 +1,17 @@
 package com.selcukokc.fooddelivery.service
 
-import android.app.Activity
 import android.app.Application
-import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import com.selcukokc.fooddelivery.R
-import com.selcukokc.fooddelivery.view.LoginFragment
-import com.selcukokc.fooddelivery.view.LoginFragmentDirections
-import com.selcukokc.fooddelivery.view.MainActivity
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import java.util.zip.Inflater
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+
 
 class AppRepository(val application: Application){
 
@@ -32,7 +24,7 @@ class AppRepository(val application: Application){
     private var restaurantUserMutableLiveData: MutableLiveData<FirebaseUser>
     private var restaurantFirebaseAuth: FirebaseAuth
     private var restLoggedOutMutableLiveData: MutableLiveData<Boolean>
-
+    private var restaurantInformationMutableLiveData: MutableLiveData<ArrayList<String>>
 
     init{
         userMutableLiveData = MutableLiveData()
@@ -44,6 +36,8 @@ class AppRepository(val application: Application){
         restaurantFirebaseAuth = FirebaseAuth.getInstance()
         restLoggedOutMutableLiveData = MutableLiveData()
         db = FirebaseFirestore.getInstance()
+
+        restaurantInformationMutableLiveData = MutableLiveData()
 
         if(firebaseAuth.currentUser != null){
             userMutableLiveData.postValue(firebaseAuth.currentUser)
@@ -148,6 +142,35 @@ class AppRepository(val application: Application){
 
     }
 
+    fun restaurantInformation(){
+        var list = ArrayList<String>()
+        val userID=firebaseAuth.currentUser?.uid
+        userID?.let { id->
+            val docRef = db.collection("Restoranlar").document("BVBE3PuZKTaCMwvKz2lO")
+            docRef.get().addOnCompleteListener {
+                if(it.isSuccessful){
+                    val document = it.result
+                     if(document!=null){
+                         document.getString("RestoranAd")?.let { it1 -> list.add(it1) }
+                         document.getString("logo")?.let{ it2 -> list.add(it2) }
+                     } else {
+                         Log.e("LOGGER", "No such document");
+                     }
+
+                    restaurantInformationMutableLiveData.postValue(list)
+
+
+                } else {
+                    Log.e("LOGGER", "get failed with ", it.exception);
+                }
+
+            }
+
+
+        }
+
+    }
+
 
     fun logout(){
         firebaseAuth.signOut()
@@ -170,5 +193,10 @@ class AppRepository(val application: Application){
     fun getRestaurantLoggedOutMutableLiveData(): MutableLiveData<Boolean>{
         return  restLoggedOutMutableLiveData
     }
+
+    fun getRestaurantInformationMutableLiveData(): MutableLiveData<ArrayList<String>>{
+        return restaurantInformationMutableLiveData
+    }
+
 
 }
