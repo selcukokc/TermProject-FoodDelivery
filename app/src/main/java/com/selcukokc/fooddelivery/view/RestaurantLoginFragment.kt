@@ -44,11 +44,14 @@ class RestaurantLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        goToRegisterFragment.setOnClickListener {
+            Navigation.findNavController(it).navigate(RestaurantLoginFragmentDirections.actionRestaurantLoginFragmentToRestaurantRegisterFragment())
+        }
+
         btnRestaurantLogin.setOnClickListener {
             val email = txtRestaurantEmailLogin.text.toString().trim()
             val password = txtRestPasswordLogin.text.toString().trim()
             restaurantLoginViewModel.restaurantLogin(email, password)
-
         }
 
     }

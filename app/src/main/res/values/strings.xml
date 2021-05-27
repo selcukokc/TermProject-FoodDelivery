@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FoodDelivery</string>
 
-    <string-array name="sehirler_array">
+    <string-array name="cities_array">
         <item>İstanbul</item>
         <item>Ankara</item>
         <item>İzmir</item>
@@ -10,6 +10,16 @@
         <item>Konya</item>
         <item>Gaziantep</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string-array name="categories_array">
+        <item>Burger</item>
+        <item>Pizza</item>
+        <item>Döner</item>
+        <item>Kebap</item>
+        <item>Pide, Lahmacun</item>
+        <item>Çiğ Köfte</item>
+    </string-array>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

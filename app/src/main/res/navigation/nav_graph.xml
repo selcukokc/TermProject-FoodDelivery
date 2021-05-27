@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_restaurantLoginFragment_to_restaurantPanelFragment"
             app:destination="@id/restaurantPanelFragment" />
+        <action
+            android:id="@+id/action_restaurantLoginFragment_to_restaurantRegisterFragment"
+            app:destination="@id/restaurantRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantPanelFragment"
@@ -138,6 +141,18 @@
             app:destination="@id/restourantMenuPanelFragment" />
         <action
             android:id="@+id/action_restaurantProfileFragment_to_restaurantPanelFragment"
+            app:destination="@id/restaurantPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantRegisterFragment"
+        android:name="com.selcukokc.fooddelivery.view.RestaurantRegisterFragment"
+        android:label="fragment_restaurant_register"
+        tools:layout="@layout/fragment_restaurant_register" >
+        <action
+            android:id="@+id/action_restaurantRegisterFragment_to_restaurantLoginFragment"
+            app:destination="@id/restaurantLoginFragment" />
+        <action
+            android:id="@+id/action_restaurantRegisterFragment_to_restaurantPanelFragment"
             app:destination="@id/restaurantPanelFragment" />
     </fragment>
 </navigation>
