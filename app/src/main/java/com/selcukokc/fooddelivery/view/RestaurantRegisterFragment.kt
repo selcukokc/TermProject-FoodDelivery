@@ -12,10 +12,7 @@ import kotlinx.android.synthetic.main.fragment_restaurant_register.*
 
 class RestaurantRegisterFragment : Fragment() {
 
-   // private val categories = ArrayList<String>()
     private lateinit var categoryAdapter: ArrayAdapter<CharSequence>
-
-    //private val cities = ArrayList<CharSequence>()
     private lateinit var cityAdapter: ArrayAdapter<CharSequence>
 
 

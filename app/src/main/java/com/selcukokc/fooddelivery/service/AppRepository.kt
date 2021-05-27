@@ -25,6 +25,7 @@ class AppRepository(val application: Application){
     private var restaurantFirebaseAuth: FirebaseAuth
     private var restLoggedOutMutableLiveData: MutableLiveData<Boolean>
     private var restaurantInformationMutableLiveData: MutableLiveData<ArrayList<String>>
+    private var restaurantUserInfoMutableLiveData: MutableLiveData<Array<String>>
 
     init{
         userMutableLiveData = MutableLiveData()
@@ -38,6 +39,7 @@ class AppRepository(val application: Application){
         db = FirebaseFirestore.getInstance()
 
         restaurantInformationMutableLiveData = MutableLiveData()
+        restaurantUserInfoMutableLiveData = MutableLiveData()
 
         if(firebaseAuth.currentUser != null){
             userMutableLiveData.postValue(firebaseAuth.currentUser)
@@ -123,6 +125,49 @@ class AppRepository(val application: Application){
               })
 
     }
+
+    fun restaurantRegister(email: String, password: String, restaurantName: String, category: String, city: String, address: String,
+    comments: Array<String>, rating: Double, logo: String){
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( ContextCompat.getMainExecutor(application),{
+            if(it.isSuccessful){
+                val userID = firebaseAuth.currentUser?.uid
+                val documentReference = userID?.let { it1 ->
+                    db.collection("Restoranlar")
+                        .document(it1)
+                }
+
+                val arrInfo = arrayOf(restaurantName, category, city, address)
+
+
+                val userinformation: MutableMap<String, Any> = HashMap()
+                userinformation["Ad"] = restaurantName
+                userinformation["Soyad"] = category
+                userinformation["Şehir"] = city
+                userinformation["Favoriler"] = address
+                userinformation["Yorumlar"] = comments
+                userinformation["Puan"] = rating
+                userinformation["Logo"] = logo
+
+                documentReference?.set(userinformation)?.addOnSuccessListener(OnSuccessListener {
+                    restaurantUserMutableLiveData.postValue(firebaseAuth.currentUser)
+                    restaurantUserInfoMutableLiveData.postValue(arrInfo)
+
+                })
+            } else {
+                Toast.makeText(
+                    application,
+                    "Kayıt başarısız oldu: " + it.exception?.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+        }
+
+
+        )
+
+    }
+
 
     fun restaurantLogin(email: String, password: String){
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(ContextCompat.getMainExecutor(application),
