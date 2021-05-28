@@ -16,10 +16,6 @@ abstract class BaseFragment : Fragment() {
         if (activity is MainActivity) {
             var  mainActivity = activity as MainActivity
             mainActivity.setBottomNavigationVisibility(bottomNavigationViewVisibility)
-
-            if (activity is MainActivity) {
-                mainActivity.setBottomNavigationVisibility(bottomNavigationViewVisibility)
-            }
         }
     }
 
