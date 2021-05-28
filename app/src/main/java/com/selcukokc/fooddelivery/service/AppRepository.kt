@@ -127,7 +127,7 @@ class AppRepository(val application: Application){
     }
 
     fun restaurantRegister(email: String, password: String, restaurantName: String, category: String, city: String, address: String,
-    comments: Array<String>, rating: Double, logo: String){
+    comments: ArrayList<String>, rating: Double, logo: String){
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( ContextCompat.getMainExecutor(application),{
             if(it.isSuccessful){
                 val userID = firebaseAuth.currentUser?.uid
@@ -141,9 +141,9 @@ class AppRepository(val application: Application){
 
                 val userinformation: MutableMap<String, Any> = HashMap()
                 userinformation["Ad"] = restaurantName
-                userinformation["Soyad"] = category
+                userinformation["Kategori"] = category
                 userinformation["Şehir"] = city
-                userinformation["Favoriler"] = address
+                userinformation["Adres"] = address
                 userinformation["Yorumlar"] = comments
                 userinformation["Puan"] = rating
                 userinformation["Logo"] = logo

@@ -24,7 +24,7 @@ class RestaurantRegisterViewModel(application: Application) : AndroidViewModel(a
 
 
     fun restaurantRegister(email: String, password: String ,restaurantName: String, category: String, city: String,
-    address: String, comments: Array<String>, rating: Double, logo: String){
+    address: String, comments: ArrayList<String>, rating: Double, logo: String){
         appRepository.restaurantRegister(email, password, restaurantName, category, city, address, comments, rating, logo)
     }
 
