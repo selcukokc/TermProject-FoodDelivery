@@ -10,15 +10,15 @@ import com.selcukokc.fooddelivery.service.AppRepository
 class RestaurantRegisterViewModel(application: Application) : AndroidViewModel(application) {
 
     var appRepository : AppRepository
-    var userRestaurantMutableLiveData: MutableLiveData<FirebaseUser>
-    var restaurantUserInformationMutableLiveData: MutableLiveData<Array<String>>
+    var restaurantUserMutableLiveData: MutableLiveData<FirebaseUser>
+    var restaurantUserInformationMutableLiveData: MutableLiveData<ArrayList<String>>
 
 
 
     init{
         appRepository = AppRepository(application)
-        userRestaurantMutableLiveData = appRepository.getUserMutableLiveData()
-        restaurantUserInformationMutableLiveData = appRepository.getUserInfoMutableLiveData()
+        restaurantUserMutableLiveData = appRepository.getRestaurantUserMutableLiveData()
+        restaurantUserInformationMutableLiveData = appRepository.getRestaurantInformationMutableLiveData()
     }
 
 

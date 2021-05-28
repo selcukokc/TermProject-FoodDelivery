@@ -128,9 +128,9 @@ class AppRepository(val application: Application){
 
     fun restaurantRegister(email: String, password: String, restaurantName: String, category: String, city: String, address: String,
     comments: ArrayList<String>, rating: Double, logo: String){
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( ContextCompat.getMainExecutor(application),{
+        restaurantFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( ContextCompat.getMainExecutor(application),{
             if(it.isSuccessful){
-                val userID = firebaseAuth.currentUser?.uid
+                val userID = restaurantFirebaseAuth.currentUser?.uid
                 val documentReference = userID?.let { it1 ->
                     db.collection("Restoranlar")
                         .document(it1)
@@ -149,7 +149,7 @@ class AppRepository(val application: Application){
                 userinformation["Logo"] = logo
 
                 documentReference?.set(userinformation)?.addOnSuccessListener(OnSuccessListener {
-                    restaurantUserMutableLiveData.postValue(firebaseAuth.currentUser)
+                    restaurantUserMutableLiveData.postValue(restaurantFirebaseAuth.currentUser)
                     restaurantUserInfoMutableLiveData.postValue(arrInfo)
 
                 })
@@ -170,10 +170,10 @@ class AppRepository(val application: Application){
 
 
     fun restaurantLogin(email: String, password: String){
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(ContextCompat.getMainExecutor(application),
+        restaurantFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(ContextCompat.getMainExecutor(application),
             {
                 if (it.isSuccessful) {
-                    restaurantUserMutableLiveData.postValue(firebaseAuth.currentUser)
+                    restaurantUserMutableLiveData.postValue(restaurantFirebaseAuth.currentUser)
 
                 } else {
                     Toast.makeText(
@@ -189,7 +189,7 @@ class AppRepository(val application: Application){
 
     fun restaurantInformation(){
         var list = ArrayList<String>()
-        val userID=firebaseAuth.currentUser?.uid
+        val userID=restaurantFirebaseAuth.currentUser?.uid
         userID?.let { id->
             val docRef = db.collection("Restoranlar").document("BVBE3PuZKTaCMwvKz2lO")
             docRef.get().addOnCompleteListener {

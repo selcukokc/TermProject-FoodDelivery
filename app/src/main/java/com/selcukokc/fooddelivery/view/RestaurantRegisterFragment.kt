@@ -22,26 +22,20 @@ class RestaurantRegisterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("ERROR", "oncreate is working!")
         restaurantRegisterViewModel = ViewModelProvider(this).get(RestaurantRegisterViewModel::class.java)
 
-        restaurantRegisterViewModel.userRestaurantMutableLiveData.observe(this, Observer {  firebaseUser->
+        restaurantRegisterViewModel.restaurantUserMutableLiveData.observe(this, Observer {  firebaseUser->
             if(firebaseUser != null){
                 restaurantRegisterViewModel.restaurantUserInformationMutableLiveData.observe(this, Observer { arr->
                     if(arr != null){
                         val action = RestaurantRegisterFragmentDirections.actionRestaurantRegisterFragmentToRestaurantPanelFragment()
                         view?.let { Navigation.findNavController(it).navigate(action) }
                     }
-                    else
-                    Log.e("ERROR", "array is null!")
 
                 })
 
             }
 
-            else{
-                Log.e("ERROR", "Firebase user is null!")
-            }
 
 
         })
