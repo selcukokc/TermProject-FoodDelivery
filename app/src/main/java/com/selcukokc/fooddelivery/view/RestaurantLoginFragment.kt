@@ -52,6 +52,12 @@ class RestaurantLoginFragment : Fragment() {
         binding.btnRestaurantLogin.setOnClickListener {
             val email = binding.txtRestaurantEmailLogin.text.toString().trim()
             val password = binding.txtRestPasswordLogin.text.toString().trim()
+
+            if(email.isEmpty() || password.isEmpty()){
+                Toast.makeText(context,"Lütfen tüm bilgileri eksiksiz girdiğinizden emin olunuz.", Toast.LENGTH_SHORT).show()
+            }
+
+            else
             restaurantLoginViewModel.restaurantLogin(email, password)
         }
 
