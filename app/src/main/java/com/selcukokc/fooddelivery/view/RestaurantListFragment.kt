@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.selcukokc.fooddelivery.adapters.RestaurantAdapter
 import com.selcukokc.fooddelivery.model.Menu
 import com.selcukokc.fooddelivery.model.Restaurants
-import com.selcukokc.fooddelivery.R
-import kotlinx.android.synthetic.main.fragment_restaurant_list.*
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantListBinding
 import kotlin.random.Random
 
 class RestaurantListFragment : Fragment() {
-
+    private lateinit var binding: FragmentRestaurantListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +26,9 @@ class RestaurantListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragmen
-        return inflater.inflate(R.layout.fragment_restaurant_list, container, false)
+        binding = FragmentRestaurantListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,11 +54,11 @@ class RestaurantListFragment : Fragment() {
         val restourantList = ArrayList<Restaurants>()
         restourantList.add(r1)
 
-        rv_restoran_listesi.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvRestoranListesi.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         var adapter = context?.let { RestaurantAdapter(it, restourantList) }
 
-        rv_restoran_listesi.adapter = adapter
+        binding.rvRestoranListesi.adapter = adapter
 
 
 

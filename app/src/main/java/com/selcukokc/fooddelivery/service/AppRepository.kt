@@ -10,7 +10,6 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
 class AppRepository(val application: Application){

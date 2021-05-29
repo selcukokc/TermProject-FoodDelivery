@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.selcukokc.fooddelivery.R
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantCommentsBinding
 
 class RestaurantCommentsFragment : Fragment() {
-
+    private lateinit var binding: FragmentRestaurantCommentsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,9 @@ class RestaurantCommentsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurant_comments, container, false)
+        binding = FragmentRestaurantCommentsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 

@@ -1,24 +1,22 @@
 package com.selcukokc.fooddelivery.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.selcukokc.fooddelivery.R
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantRegisterBinding
 import com.selcukokc.fooddelivery.viewmodel.RestaurantRegisterViewModel
-import kotlinx.android.synthetic.main.fragment_restaurant_register.*
+
 
 class RestaurantRegisterFragment : Fragment() {
 
     private lateinit var restaurantRegisterViewModel: RestaurantRegisterViewModel
+    private lateinit var binding: FragmentRestaurantRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,27 +45,28 @@ class RestaurantRegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurant_register, container, false)
+        binding = FragmentRestaurantRegisterBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        txtGoToLogin.setOnClickListener {
+        binding.txtGoToLogin.setOnClickListener {
             Navigation.findNavController(it).
             navigate(RestaurantRegisterFragmentDirections.actionRestaurantRegisterFragmentToRestaurantLoginFragment())
         }
 
 
-        btnRegisterScreenRegister.setOnClickListener {
-            val email = etRestaurantMail.text.toString().trim()
-            val password = etRestaurantPassword.text.toString().trim()
-            val restaurantName = etRestaurantName.text.toString().trim()
-            val address = etRestaurantAddress.text.toString().trim()
-            val category = etCategory.text.toString().trim()
-            val city = etCity.text.toString().trim()
+        binding.btnRegisterScreenRegister.setOnClickListener {
+            val email = binding.etRestaurantMail.text.toString().trim()
+            val password = binding.etRestaurantPassword.text.toString().trim()
+            val restaurantName = binding.etRestaurantName.text.toString().trim()
+            val address = binding.etRestaurantAddress.text.toString().trim()
+            val category = binding.etCategory.text.toString().trim()
+            val city = binding.etCity.text.toString().trim()
             val rating = 0.0
             val comments = ArrayList<String>()
             val logo = ""

@@ -9,15 +9,15 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.selcukokc.fooddelivery.R
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantLoginBinding
 import com.selcukokc.fooddelivery.viewmodel.RestaurantLoginViewModel
-import kotlinx.android.synthetic.main.fragment_restaurant_login.*
+
 
 
 class RestaurantLoginFragment : Fragment() {
 
     private lateinit var restaurantLoginViewModel: RestaurantLoginViewModel
-
+    private lateinit var binding: FragmentRestaurantLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,20 +37,21 @@ class RestaurantLoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurant_login, container, false)
+        binding = FragmentRestaurantLoginBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        goToRegisterFragment.setOnClickListener {
+        binding.goToRegisterFragment.setOnClickListener {
             Navigation.findNavController(it).navigate(RestaurantLoginFragmentDirections.actionRestaurantLoginFragmentToRestaurantRegisterFragment())
         }
 
-        btnRestaurantLogin.setOnClickListener {
-            val email = txtRestaurantEmailLogin.text.toString().trim()
-            val password = txtRestPasswordLogin.text.toString().trim()
+        binding.btnRestaurantLogin.setOnClickListener {
+            val email = binding.txtRestaurantEmailLogin.text.toString().trim()
+            val password = binding.txtRestPasswordLogin.text.toString().trim()
             restaurantLoginViewModel.restaurantLogin(email, password)
         }
 

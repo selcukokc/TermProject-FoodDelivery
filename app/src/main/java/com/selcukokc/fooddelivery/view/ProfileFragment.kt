@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.selcukokc.fooddelivery.R
+import com.selcukokc.fooddelivery.databinding.FragmentHomepageBinding
+import com.selcukokc.fooddelivery.databinding.FragmentProfileBinding
 
 class ProfileFragment : BaseFragment() {
     override var bottomNavigationViewVisibility = View.VISIBLE
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +24,9 @@ class ProfileFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 }

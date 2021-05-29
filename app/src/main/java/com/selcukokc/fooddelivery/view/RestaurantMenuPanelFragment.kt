@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.selcukokc.fooddelivery.R
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantMenuPanelBinding
 
 class RestaurantMenuPanelFragment : Fragment() {
-
+    private lateinit var binding: FragmentRestaurantMenuPanelBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +18,9 @@ class RestaurantMenuPanelFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_restaurant_menu_panel, container, false)
+        binding = FragmentRestaurantMenuPanelBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 

@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.selcukokc.fooddelivery.adapters.MenuAdapter
 import com.selcukokc.fooddelivery.model.Menu
-import com.selcukokc.fooddelivery.R
-import kotlinx.android.synthetic.main.fragment_restaurant_detail.*
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantDetailBinding
+
 
 class RestaurantDetailFragment : Fragment() {
     private lateinit var menuList: ArrayList<Menu>
-
+    private lateinit var binding: FragmentRestaurantDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +26,9 @@ class RestaurantDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurant_detail, container, false)
+        binding = FragmentRestaurantDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,13 +36,13 @@ class RestaurantDetailFragment : Fragment() {
 
 
         menuList = ArrayList<Menu>()
-        restaurantDetailRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.restaurantDetailRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         arguments?.let {
 
-            txtRestaurantName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.restoranAd
-            txtCategoryName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.kategori
-            txtRestaurantRating.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.puan.toString()
+            binding.txtRestaurantName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.restoranAd
+            binding.txtCategoryName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.kategori
+            binding.txtRestaurantRating.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.puan.toString()
 
 
             menuList.add(RestaurantDetailFragmentArgs.fromBundle(it).restaurant.menuArr?.get(0))
@@ -52,7 +53,7 @@ class RestaurantDetailFragment : Fragment() {
 
        var menuAdapter = context?.let { MenuAdapter(it, menuList) }
 
-       restaurantDetailRv.adapter = menuAdapter
+       binding.restaurantDetailRv.adapter = menuAdapter
 
     }
 

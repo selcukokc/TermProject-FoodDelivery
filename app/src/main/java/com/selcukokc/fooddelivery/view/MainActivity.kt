@@ -8,15 +8,18 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.selcukokc.fooddelivery.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.selcukokc.fooddelivery.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController : NavController
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar3)
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar3)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         navController = findNavController(R.id.navHost)
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setBottomNavigationVisibility(visibility: Int) {
         // get the reference of the bottomNavigationView and set the visibility.
-        bottomNavigationView.visibility = visibility
+        binding.bottomNavigationView.visibility = visibility
     }
 
 }

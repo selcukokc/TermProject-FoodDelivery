@@ -9,21 +9,23 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.R
-import com.selcukokc.fooddelivery.service.AppRepository
+import com.selcukokc.fooddelivery.databinding.FragmentRestaurantPanelBinding
 import com.selcukokc.fooddelivery.viewmodel.RestaurantPanelViewModel
-import kotlinx.android.synthetic.main.fragment_restaurant_panel.*
+
 
 
 class RestaurantPanelFragment : Fragment() {
 
     private lateinit var restaurantPanelViewModel: RestaurantPanelViewModel
+    private lateinit var binding: FragmentRestaurantPanelBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         restaurantPanelViewModel = ViewModelProvider(this).get(RestaurantPanelViewModel::class.java)
         restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(this, Observer{ list->
             if(list.size > 0){
-                txtName.text = list.get(0)
+                binding.txtName.text = list.get(0)
 
 
             } else{
@@ -50,9 +52,9 @@ class RestaurantPanelFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_restaurant_panel, container, false)
+        binding = FragmentRestaurantPanelBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
