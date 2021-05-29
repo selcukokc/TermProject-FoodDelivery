@@ -146,8 +146,8 @@
     <fragment
         android:id="@+id/restaurantRegisterFragment"
         android:name="com.selcukokc.fooddelivery.view.RestaurantRegisterFragment"
-        android:label="fragment_restaurant_register"
-        tools:layout="@layout/fragment_restaurant_register" >
+        android:label="Restoran Kayıt"
+        tools:layout="@layout/fragment_restaurant_register">
         <action
             android:id="@+id/action_restaurantRegisterFragment_to_restaurantLoginFragment"
             app:destination="@id/restaurantLoginFragment" />
