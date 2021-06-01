@@ -70,7 +70,8 @@ class RestaurantPanelFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
            R.id.restaurant_logout -> restaurantPanelViewModel.logout()
-
+           R.id.itemMenus -> view?.let{ Navigation.findNavController(it).navigate(R.id.action_restaurantPanelFragment_to_restourantMenuPanelFragment) }
+           R.id.itemProfile -> view?.let { Navigation.findNavController(it).navigate(R.id.action_restaurantPanelFragment_to_restaurantProfileFragment) }
         }
 
 
