@@ -10,12 +10,14 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.selcukokc.fooddelivery.model.Restaurants
+import com.selcukokc.fooddelivery.model.User
 
 
 class AppRepository(val application: Application){
 
     private var userMutableLiveData : MutableLiveData<FirebaseUser>
-    private var userinfoMutableLiveData : MutableLiveData<Array<String>>
+    private var userinfoMutableLiveData : MutableLiveData<User>
     private var loggedOutMutableLiveData: MutableLiveData<Boolean>
     private var firebaseAuth: FirebaseAuth
     private var db: FirebaseFirestore
@@ -23,8 +25,8 @@ class AppRepository(val application: Application){
     private var restaurantUserMutableLiveData: MutableLiveData<FirebaseUser>
     private var restaurantFirebaseAuth: FirebaseAuth
     private var restLoggedOutMutableLiveData: MutableLiveData<Boolean>
-    private var restaurantInformationMutableLiveData: MutableLiveData<ArrayList<String>>
-    private var restaurantUserInfoMutableLiveData: MutableLiveData<Array<String>>
+    private var restaurantInformationMutableLiveData: MutableLiveData<Restaurants>
+    private var restaurantUserInfoMutableLiveData: MutableLiveData<Restaurants>
 
     init{
         userMutableLiveData = MutableLiveData()
@@ -60,9 +62,10 @@ class AppRepository(val application: Application){
             name: String,
             surname: String,
             city: String,
-            favorites: ArrayList<String>,
+            favorites: ArrayList<Restaurants>,
             userAddress: String
     ){
+        var user: User?
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener (
                 ContextCompat.getMainExecutor(application),
             {
@@ -74,9 +77,7 @@ class AppRepository(val application: Application){
                                 .document(it1)
                     }  //bu dizinde kullanıcı verilerini tutacağız.
 
-
-                    val arr = arrayOf(name, surname)
-
+                    user = User(userID, name, surname, city, userAddress, favorites)
 
                     val userinformation: MutableMap<String, Any> = HashMap()
                     userinformation["Ad"] = name
@@ -89,7 +90,7 @@ class AppRepository(val application: Application){
 
                     documentReference?.set(userinformation)?.addOnSuccessListener(OnSuccessListener {
                         userMutableLiveData.postValue(firebaseAuth.currentUser)
-                        userinfoMutableLiveData.postValue(arr)
+                        userinfoMutableLiveData.postValue(user)
 
 
                     })
@@ -127,6 +128,7 @@ class AppRepository(val application: Application){
 
     fun restaurantRegister(email: String, password: String, restaurantName: String, category: String, city: String, address: String,
     comments: ArrayList<String>, rating: Double, logo: String){
+        var restaurant: Restaurants?
         restaurantFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( ContextCompat.getMainExecutor(application),{
             if(it.isSuccessful){
                 val userID = restaurantFirebaseAuth.currentUser?.uid
@@ -135,8 +137,7 @@ class AppRepository(val application: Application){
                         .document(it1)
                 }
 
-                val arrInfo = arrayOf(restaurantName, category, city, address)
-
+                restaurant = Restaurants(userID, category, restaurantName, logo, null, city, rating, null)
 
                 val userinformation: MutableMap<String, Any> = HashMap()
                 userinformation["Ad"] = restaurantName
@@ -149,7 +150,7 @@ class AppRepository(val application: Application){
 
                 documentReference?.set(userinformation)?.addOnSuccessListener(OnSuccessListener {
                     restaurantUserMutableLiveData.postValue(restaurantFirebaseAuth.currentUser)
-                    restaurantUserInfoMutableLiveData.postValue(arrInfo)
+                    restaurantUserInfoMutableLiveData.postValue(restaurant)
 
                 })
             } else {
@@ -187,21 +188,23 @@ class AppRepository(val application: Application){
     }
 
     fun restaurantInformation(){
-        var list = ArrayList<String>()
+        var restaurant : Restaurants?
         val userID=restaurantFirebaseAuth.currentUser?.uid
         userID?.let { id->
-            val docRef = db.collection("Restoranlar").document("BVBE3PuZKTaCMwvKz2lO")
+            val docRef = db.collection("Restoranlar").document(userID)
             docRef.get().addOnCompleteListener {
+
                 if(it.isSuccessful){
                     val document = it.result
-                     if(document!=null){
-                         document.getString("RestoranAd")?.let { it1 -> list.add(it1) }
-                         document.getString("logo")?.let{ it2 -> list.add(it2) }
+
+                    if(document!=null){
+                         restaurant = Restaurants(userID, document.getString("Kategori"),document.getString("Ad"),
+                         document.getString("Logo"),null, document.getString("Şehir"), null,
+                         null)
+                         restaurantInformationMutableLiveData.postValue(restaurant)
                      } else {
                          Log.e("LOGGER", "No such document");
                      }
-
-                    restaurantInformationMutableLiveData.postValue(list)
 
 
                 } else {
@@ -226,7 +229,7 @@ class AppRepository(val application: Application){
         return userMutableLiveData
     }
 
-    fun getUserInfoMutableLiveData(): MutableLiveData<Array<String>>{
+    fun getUserInfoMutableLiveData(): MutableLiveData<User>{
         return userinfoMutableLiveData
     }
 
@@ -238,7 +241,7 @@ class AppRepository(val application: Application){
         return  restLoggedOutMutableLiveData
     }
 
-    fun getRestaurantInformationMutableLiveData(): MutableLiveData<ArrayList<String>>{
+    fun getRestaurantInformationMutableLiveData(): MutableLiveData<Restaurants>{
         return restaurantInformationMutableLiveData
     }
 

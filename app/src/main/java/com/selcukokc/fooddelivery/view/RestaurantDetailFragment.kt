@@ -40,12 +40,12 @@ class RestaurantDetailFragment : Fragment() {
 
         arguments?.let {
 
-            binding.txtRestaurantName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.restoranAd
-            binding.txtCategoryName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.kategori
-            binding.txtRestaurantRating.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.puan.toString()
+           // binding.txtRestaurantName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.restoranAd
+           // binding.txtCategoryName.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.kategori
+           // binding.txtRestaurantRating.text = RestaurantDetailFragmentArgs.fromBundle(it).restaurant.puan.toString()
 
 
-            menuList.add(RestaurantDetailFragmentArgs.fromBundle(it).restaurant.menuArr?.get(0))
+           // menuList.add(RestaurantDetailFragmentArgs.fromBundle(it).restaurant.menuArr?.get(0))
 
         }
 

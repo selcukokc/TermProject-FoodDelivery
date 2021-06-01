@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
+import com.selcukokc.fooddelivery.model.Restaurants
 import com.selcukokc.fooddelivery.service.AppRepository
 
 
@@ -11,7 +12,7 @@ class RestaurantRegisterViewModel(application: Application) : AndroidViewModel(a
 
     var appRepository : AppRepository
     var restaurantUserMutableLiveData: MutableLiveData<FirebaseUser>
-    var restaurantUserInformationMutableLiveData: MutableLiveData<ArrayList<String>>
+    var restaurantUserInformationMutableLiveData: MutableLiveData<Restaurants>
 
 
 

@@ -16,7 +16,7 @@ data class Restaurants (
     val category : String?,
     val restaurantName : String?,
     val logoUrl : String?,
-    val menuArr : ArrayList<Menu>,
+    val menuArr : ArrayList<Menu>?,
     val city : String?,
     val rating : Double?,
     val comments : ArrayList<String>?

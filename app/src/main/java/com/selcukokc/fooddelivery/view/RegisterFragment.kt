@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentRegisterBinding
+import com.selcukokc.fooddelivery.model.Restaurants
 import com.selcukokc.fooddelivery.viewmodel.RegisterViewModel
 
 
@@ -24,9 +25,9 @@ class RegisterFragment : BaseFragment() {
         registerViewModel.userMutableLiveData.observe(this, Observer { firebaseUser ->
             if(firebaseUser != null){
 
-                registerViewModel.userinfoMutableLiveData.observe(this, Observer { infoArray->
+                registerViewModel.userinfoMutableLiveData.observe(this, Observer { user ->
 
-                    if (infoArray != null){
+                    if (user != null){
                         val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
                         view?.let { Navigation.findNavController(it).navigate(action) }
                     }
@@ -58,7 +59,7 @@ class RegisterFragment : BaseFragment() {
             val name = binding.etName.text.toString().trim()
             val surname = binding.etSurname.text.toString().trim()
             val city = ""
-            val favorites = ArrayList<String>()
+            val favorites = ArrayList<Restaurants>()
             val address = ""
 
             if(email.isEmpty() || password.isEmpty() || name.isEmpty() || surname.isEmpty()){

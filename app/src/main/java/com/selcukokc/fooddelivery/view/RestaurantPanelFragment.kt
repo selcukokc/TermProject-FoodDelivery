@@ -23,10 +23,9 @@ class RestaurantPanelFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         restaurantPanelViewModel = ViewModelProvider(this).get(RestaurantPanelViewModel::class.java)
-        restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(this, Observer{ list->
-            if(list.size > 0){
-                binding.txtName.text = list.get(0)
-
+        restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(this, Observer{ restaurant->
+            if(restaurant!=null){
+                binding.txtName.text = restaurant.restaurantName.toString()
 
             } else{
                 Log.e( "ssss", "empty list")

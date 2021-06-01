@@ -24,8 +24,8 @@ class RestaurantRegisterFragment : Fragment() {
 
         restaurantRegisterViewModel.restaurantUserMutableLiveData.observe(this, Observer {  firebaseUser->
             if(firebaseUser != null){
-                restaurantRegisterViewModel.restaurantUserInformationMutableLiveData.observe(this, Observer { arr->
-                    if(arr != null){
+                restaurantRegisterViewModel.restaurantUserInformationMutableLiveData.observe(this, Observer { restaurant ->
+                    if(restaurant != null){
                         val action = RestaurantRegisterFragmentDirections.actionRestaurantRegisterFragmentToRestaurantPanelFragment()
                         view?.let { Navigation.findNavController(it).navigate(action) }
                     }

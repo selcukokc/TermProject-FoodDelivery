@@ -41,9 +41,6 @@ class MenuAdapter(private val mContext : Context, private val menuList: ArrayLis
 
 
         override fun onBindViewHolder(holder: MenuAdapter.CardViewHolder, position: Int) {
-            holder.txtMenuName.text = menuList[position].menuAd
-            holder.txtMenuDesc.text = menuList[position].menuAciklama
-            holder.txtMenuPrice.text = (menuList[position].menuFiyat.toString()+" TL")
 
 
 

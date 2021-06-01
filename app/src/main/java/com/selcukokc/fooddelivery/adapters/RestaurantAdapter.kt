@@ -45,9 +45,7 @@ class RestaurantAdapter(private val mContext : Context, private val restaurantLi
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.txtCategoryName.text = restaurantList[position].kategori
-        holder.txtRestaurantName.text = restaurantList[position].restoranAd
-        holder.txtRestaurantRating.text = restaurantList[position].puan.toString()
+
 
 
         holder.cardView.setOnClickListener {
