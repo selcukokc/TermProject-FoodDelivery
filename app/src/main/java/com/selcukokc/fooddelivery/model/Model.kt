@@ -4,36 +4,30 @@ import java.io.Serializable
 
 data class User(
     val userId : String?,
-    val ad : String?,
-    val soyad : String?,
-    val sehir : String?,
-    val adres : String?,
-    val favoriler : ArrayList<Restaurants>?
-) : Serializable{
-
-}
+    val name : String?,
+    val surname : String?,
+    val city : String?,
+    val address : String?,
+    val favorites : ArrayList<Restaurants>?
+) : Serializable
 
 data class Restaurants (
-    val restoranId : String?,
-    val kategori : String?,
-    val restoranAd : String?,
+    val restaurantId : String?,
+    val category : String?,
+    val restaurantName : String?,
     val logoUrl : String?,
     val menuArr : ArrayList<Menu>,
-    val sehirler : ArrayList<String>?,
-    val puan : Double?,
-    val yorumlar : ArrayList<String>?
-) : Serializable {
-
-}
+    val city : String?,
+    val rating : Double?,
+    val comments : ArrayList<String>?
+) : Serializable
 
 data class Menu(
     val menuId : String?,
-    val menuAd : String?,
-    val menuAciklama: String?,
-    val menuFiyat : Double?
-) : Serializable {
-
-}
+    val title : String?,
+    val description: String?,
+    val price : Double?
+) : Serializable
 
 
 
