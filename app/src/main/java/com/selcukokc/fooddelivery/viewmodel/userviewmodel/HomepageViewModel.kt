@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.viewmodel
+package com.selcukokc.fooddelivery.viewmodel.userviewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

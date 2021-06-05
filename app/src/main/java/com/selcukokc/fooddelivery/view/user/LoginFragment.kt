@@ -1,8 +1,6 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.user
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.FragmentLoginBinding
-import com.selcukokc.fooddelivery.viewmodel.LoginViewModel
+import com.selcukokc.fooddelivery.view.BaseFragment
+import com.selcukokc.fooddelivery.viewmodel.userviewmodel.LoginViewModel
 
 
 

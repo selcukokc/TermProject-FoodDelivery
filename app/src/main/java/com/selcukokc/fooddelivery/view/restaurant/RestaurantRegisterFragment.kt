@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.restaurant
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantRegisterBinding
-import com.selcukokc.fooddelivery.viewmodel.RestaurantRegisterViewModel
+import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantRegisterViewModel
 
 
 class RestaurantRegisterFragment : Fragment() {

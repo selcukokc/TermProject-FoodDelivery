@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.restaurant
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantPanelBinding
-import com.selcukokc.fooddelivery.viewmodel.RestaurantPanelViewModel
+import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantPanelViewModel
 
 
 

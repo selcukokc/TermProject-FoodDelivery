@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.restaurant
 
 import android.os.Bundle
 import android.view.LayoutInflater

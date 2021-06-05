@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.viewmodel
+package com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel
 
 import android.app.Application
 import android.widget.Toast
@@ -9,21 +9,21 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
 import com.selcukokc.fooddelivery.service.FirebaseService
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+class RestaurantLoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var _userMutableLiveData = MutableLiveData<FirebaseUser>()
-    val userMutableLiveData : LiveData<FirebaseUser>
-        get() = _userMutableLiveData
+    private var _restaurantUserMutableLiveData = MutableLiveData<FirebaseUser>()
+    val restaurantUserMutableLiveData : LiveData<FirebaseUser>
+        get() = _restaurantUserMutableLiveData
 
     private var firebaseService = FirebaseService()
 
 
-    fun login(email: String, password: String){
-        firebaseService.firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
+    fun restaurantLogin(email: String, password: String){
+        firebaseService.restaurantFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
             ContextCompat.getMainExecutor(getApplication()),
             {
                 if (it.isSuccessful) {
-                    _userMutableLiveData.postValue(firebaseService.firebaseAuth.currentUser)
+                    _restaurantUserMutableLiveData.postValue(firebaseService.restaurantFirebaseAuth.currentUser)
 
                 } else {
                     Toast.makeText(

@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.viewmodel
+package com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel
 
 import android.app.Application
 import android.widget.Toast

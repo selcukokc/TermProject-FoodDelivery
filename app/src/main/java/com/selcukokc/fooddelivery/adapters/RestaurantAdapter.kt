@@ -11,7 +11,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.selcukokc.fooddelivery.model.Restaurants
 import com.selcukokc.fooddelivery.R
-import com.selcukokc.fooddelivery.view.RestaurantListFragmentDirections
+import com.selcukokc.fooddelivery.view.restaurant.RestaurantListFragmentDirections
 
 
 class RestaurantAdapter(private val mContext : Context, private val restaurantList: ArrayList<Restaurants>) : RecyclerView.Adapter<RestaurantAdapter.CardViewHolder>() {

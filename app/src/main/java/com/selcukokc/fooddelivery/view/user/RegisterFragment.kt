@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentRegisterBinding
 import com.selcukokc.fooddelivery.model.Restaurants
-import com.selcukokc.fooddelivery.viewmodel.RegisterViewModel
+import com.selcukokc.fooddelivery.view.BaseFragment
+import com.selcukokc.fooddelivery.viewmodel.userviewmodel.RegisterViewModel
 
 
 class RegisterFragment : BaseFragment() {

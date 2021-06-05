@@ -1,4 +1,4 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentHomepageBinding
-import com.selcukokc.fooddelivery.viewmodel.HomepageViewModel
+import com.selcukokc.fooddelivery.view.BaseFragment
+import com.selcukokc.fooddelivery.viewmodel.userviewmodel.HomepageViewModel
 
 
 class HomepageFragment : BaseFragment() {

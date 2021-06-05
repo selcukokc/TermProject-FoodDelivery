@@ -1,16 +1,15 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.selcukokc.fooddelivery.databinding.FragmentCartBinding
+import com.selcukokc.fooddelivery.databinding.FragmentProfileBinding
+import com.selcukokc.fooddelivery.view.BaseFragment
 
-
-
-class CartFragment : BaseFragment() {
+class ProfileFragment : BaseFragment() {
     override var bottomNavigationViewVisibility = View.VISIBLE
-    private lateinit var binding: FragmentCartBinding
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +22,9 @@ class CartFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCartBinding.inflate(inflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
-
 
 }

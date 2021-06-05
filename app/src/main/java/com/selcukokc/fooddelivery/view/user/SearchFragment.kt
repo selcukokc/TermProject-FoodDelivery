@@ -1,10 +1,11 @@
-package com.selcukokc.fooddelivery.view
+package com.selcukokc.fooddelivery.view.user
 
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.FragmentSearchBinding
+import com.selcukokc.fooddelivery.view.BaseFragment
 
 class SearchFragment: BaseFragment(), SearchView.OnQueryTextListener {
     override var bottomNavigationViewVisibility = View.VISIBLE

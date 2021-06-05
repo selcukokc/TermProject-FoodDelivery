@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.selcukokc.fooddelivery.view.LoginFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.LoginFragment"
         android:label="Kullanıcı Giriş"
         tools:layout="@layout/fragment_login">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.selcukokc.fooddelivery.view.RegisterFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.RegisterFragment"
         android:label="Kullanıcı Kayıt"
         tools:layout="@layout/fragment_register">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/homepageFragment"
-        android:name="com.selcukokc.fooddelivery.view.HomepageFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.HomepageFragment"
         android:label="Anasayfa"
         tools:layout="@layout/fragment_homepage">
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantListFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantListFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantListFragment"
         android:label="Restoran Listesi"
         tools:layout="@layout/fragment_restaurant_list">
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantDetailFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantDetailFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantDetailFragment"
         android:label="Restoran Anasayfa"
         tools:layout="@layout/fragment_restaurant_detail">
         <argument
@@ -60,22 +60,22 @@
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.selcukokc.fooddelivery.view.CategoriesFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.CategoriesFragment"
         android:label="Kategoriler"
         tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.selcukokc.fooddelivery.view.SearchFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.SearchFragment"
         android:label="Ara"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.selcukokc.fooddelivery.view.CartFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.CartFragment"
         android:label="Sepet"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.selcukokc.fooddelivery.view.ProfileFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.ProfileFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_profile" />
     <fragment
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantLoginFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantLoginFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantLoginFragment"
         android:label="Restoran Giriş"
         tools:layout="@layout/fragment_restaurant_login" >
         <action
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantPanelFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantPanelFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantPanelFragment"
         android:label="Anasayfa"
         tools:layout="@layout/fragment_restaurant_panel">
         <action
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/restourantMenuPanelFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantMenuPanelFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantMenuPanelFragment"
         android:label="Menuler"
         tools:layout="@layout/fragment_restaurant_menu_panel">
         <action
@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantProfileFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantProfileFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantProfileFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_restaurant_profile">
         <action
@@ -145,7 +145,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantRegisterFragment"
-        android:name="com.selcukokc.fooddelivery.view.RestaurantRegisterFragment"
+        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantRegisterFragment"
         android:label="Restoran Kayıt"
         tools:layout="@layout/fragment_restaurant_register">
         <action
