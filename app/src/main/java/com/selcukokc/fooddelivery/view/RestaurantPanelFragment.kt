@@ -22,29 +22,6 @@ class RestaurantPanelFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        restaurantPanelViewModel = ViewModelProvider(this).get(RestaurantPanelViewModel::class.java)
-        restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(this, Observer{ restaurant->
-            if(restaurant!=null){
-                binding.txtName.text = restaurant.restaurantName.toString()
-
-            } else{
-                Log.e( "ssss", "empty list")
-            }
-
-        })
-
-
-
-        restaurantPanelViewModel.restLoggedOutMutableLiveData.observe(this, Observer{
-            if(it){
-                Toast.makeText(context, "ÇIKIŞ YAPILDI", Toast.LENGTH_SHORT).show()
-                val action = RestaurantPanelFragmentDirections.actionRestaurantPanelFragmentToRestaurantLoginFragment()
-                view?.let{ it1 -> Navigation.findNavController(it1).navigate(action) }
-            }
-
-
-        })
-
     }
 
     override fun onCreateView(
@@ -58,8 +35,55 @@ class RestaurantPanelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        restaurantPanelViewModel = ViewModelProvider(this).get(RestaurantPanelViewModel::class.java)
 
         restaurantPanelViewModel.restaurantInformation()
+
+        restaurantPanelViewModel.restaurantInfoLoading.observe(viewLifecycleOwner, Observer {
+            if(it){
+                binding.progressBar.visibility = View.VISIBLE
+                binding.errorMessage.visibility = View.GONE
+                binding.txtName.visibility = View.GONE
+                binding.imgLogo.visibility = View.GONE
+            }
+            else{
+                binding.progressBar.visibility = View.GONE
+                binding.txtName.visibility = View.VISIBLE
+                binding.imgLogo.visibility = View.VISIBLE
+            }
+
+        })
+
+        restaurantPanelViewModel.restaurantInfoError.observe(viewLifecycleOwner, Observer{
+            when(it){
+                true -> binding.errorMessage.visibility = View.VISIBLE
+                false -> binding.errorMessage.visibility = View.GONE
+            }
+        })
+
+
+        restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(viewLifecycleOwner, Observer{ restaurant->
+            if (restaurant != null) {
+                binding.txtName.text = restaurant.restaurantName.toString()
+
+            } else {
+                Log.e("ssss", "empty list")
+            }
+
+        })
+
+
+
+        restaurantPanelViewModel.restLoggedOutMutableLiveData.observe(viewLifecycleOwner, Observer{
+            if(it){
+                Toast.makeText(context, "ÇIKIŞ YAPILDI", Toast.LENGTH_SHORT).show()
+                val action = RestaurantPanelFragmentDirections.actionRestaurantPanelFragmentToRestaurantLoginFragment()
+                view?.let{ it1 -> Navigation.findNavController(it1).navigate(action) }
+            }
+
+        })
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

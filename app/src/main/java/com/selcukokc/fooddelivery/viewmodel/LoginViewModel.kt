@@ -1,25 +1,40 @@
 package com.selcukokc.fooddelivery.viewmodel
 
 import android.app.Application
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
-import com.selcukokc.fooddelivery.service.AppRepository
+import com.selcukokc.fooddelivery.service.FirebaseService
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    var appRepository : AppRepository
-    var userMutableLiveData: MutableLiveData<FirebaseUser>
+    private var _userMutableLiveData = MutableLiveData<FirebaseUser>()
+    val userMutableLiveData : LiveData<FirebaseUser>
+        get() = _userMutableLiveData
 
-
-    init{
-        appRepository = AppRepository(application)
-        userMutableLiveData =  appRepository.getUserMutableLiveData()
-    }
+    private var firebaseService = FirebaseService()
 
 
     fun login(email: String, password: String){
-        appRepository.login(email, password)
+        firebaseService.firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
+            ContextCompat.getMainExecutor(getApplication()),
+            {
+                if (it.isSuccessful) {
+                    _userMutableLiveData.postValue(firebaseService.firebaseAuth.currentUser)
+
+                } else {
+                    Toast.makeText(
+                        getApplication(),
+                        "Giriş başarısız oldu. " + it.exception?.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            })
+
     }
 
 }

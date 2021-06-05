@@ -9,21 +9,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentHomepageBinding
-import com.selcukokc.fooddelivery.viewmodel.HomepageLiveModel
+import com.selcukokc.fooddelivery.viewmodel.HomepageViewModel
 
 
 class HomepageFragment : BaseFragment() {
     private lateinit var binding: FragmentHomepageBinding
 
     override var bottomNavigationViewVisibility = View.VISIBLE
-    private lateinit var homepageLiveModel: HomepageLiveModel
+    private lateinit var homepageViewModel: HomepageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        homepageLiveModel = ViewModelProvider(this).get(HomepageLiveModel::class.java)
+        homepageViewModel = ViewModelProvider(this).get(HomepageViewModel::class.java)
 
-        homepageLiveModel.loggedOutMutableLiveData.observe(this, Observer<Boolean>{
+        homepageViewModel.loggedOutMutableLiveData.observe(this, Observer<Boolean>{
             if(it){
                 Toast.makeText(context, "ÇIKIŞ YAPILDI", Toast.LENGTH_SHORT).show()
                 val action = HomepageFragmentDirections.actionHomepageFragmentToLoginFragment()
@@ -55,7 +55,7 @@ class HomepageFragment : BaseFragment() {
 
 
         binding.btnLogOut.setOnClickListener {
-            homepageLiveModel.logout()
+            homepageViewModel.logout()
 
         }
 
