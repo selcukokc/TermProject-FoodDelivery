@@ -8,10 +8,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.selcukokc.fooddelivery.R
 
 fun ImageView.downloadFromUrl(url : String, progressDrawable: CircularProgressDrawable){
-
+    //we need to show progress bar as drawable until our data retrieve
     val options = RequestOptions()
             .placeholder(progressDrawable)
-            .error(R.mipmap.ic_launcher_round)
+            .error(R.drawable.ic_baseline_fastfood_24)
 
     Glide.with(context)
             .setDefaultRequestOptions(options)

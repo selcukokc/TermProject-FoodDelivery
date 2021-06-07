@@ -1,5 +1,8 @@
 package com.selcukokc.fooddelivery.view.restaurant
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -8,16 +11,21 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.load.model.stream.UrlLoader
 import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantPanelBinding
+import com.selcukokc.fooddelivery.util.downloadFromUrl
+import com.selcukokc.fooddelivery.util.placeholderProgressBar
 import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantPanelViewModel
-
+import java.net.URLDecoder
 
 
 class RestaurantPanelFragment : Fragment() {
 
     private lateinit var restaurantPanelViewModel: RestaurantPanelViewModel
     private lateinit var binding: FragmentRestaurantPanelBinding
+    private lateinit var imageUri: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +53,14 @@ class RestaurantPanelFragment : Fragment() {
                 binding.errorMessage.visibility = View.GONE
                 binding.txtName.visibility = View.GONE
                 binding.imgLogo.visibility = View.GONE
+                binding.txtLastOrders.visibility = View.GONE
             }
             else{
                 binding.progressBar.visibility = View.GONE
                 binding.txtName.visibility = View.VISIBLE
+                binding.txtLastOrders.visibility = View.VISIBLE
                 binding.imgLogo.visibility = View.VISIBLE
+                restaurantPanelViewModel.showPicture()
             }
 
         })
@@ -72,7 +83,25 @@ class RestaurantPanelFragment : Fragment() {
 
         })
 
+        restaurantPanelViewModel.downloadRestaurantPicture.observe(viewLifecycleOwner, Observer{ downloadedPicture ->
+            if(!downloadedPicture.equals("")){
+                context?.let { placeholderProgressBar(it) }?.let {
+                    binding.imgLogo.downloadFromUrl(downloadedPicture,
+                        it
+                    )
+                }
+            }
 
+        })
+
+
+        restaurantPanelViewModel.restaurantPicture.observe(viewLifecycleOwner, Observer{ picture ->
+            if(picture != null){
+                Toast.makeText(context,"Fotoğraf başarıyla yüklendi.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Yükleme sırasında bir hata oluştu.", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         restaurantPanelViewModel.restLoggedOutMutableLiveData.observe(viewLifecycleOwner, Observer{
             if(it){
@@ -84,6 +113,26 @@ class RestaurantPanelFragment : Fragment() {
         })
 
 
+        binding.imgLogo.setOnClickListener {
+            choosePicture()
+        }
+
+    }
+
+    private fun choosePicture() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, 1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1 && resultCode == RESULT_OK && data?.data !=null){
+            imageUri = data.data!!
+            binding.imgLogo.setImageURI(imageUri)
+            restaurantPanelViewModel.uploadPicture(imageUri)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

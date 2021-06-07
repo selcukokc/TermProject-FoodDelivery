@@ -1,13 +1,17 @@
 package com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel
 
 import android.app.Application
+import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.load.model.stream.UrlLoader
 import com.google.firebase.auth.FirebaseUser
 import com.selcukokc.fooddelivery.model.Restaurants
 import com.selcukokc.fooddelivery.service.FirebaseService
+import java.util.*
 
 class RestaurantPanelViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -30,6 +34,14 @@ class RestaurantPanelViewModel(application: Application) : AndroidViewModel(appl
     private var _restaurantInfoLoading = MutableLiveData<Boolean>()
     val restaurantInfoLoading : LiveData<Boolean>
         get() = _restaurantInfoLoading
+
+    private var _restaurantPicture = MutableLiveData<Uri>()
+    val restaurantPicture : LiveData<Uri>
+        get() = _restaurantPicture
+
+    private var _downloadRestaurantPicture = MutableLiveData<String>()
+    val downloadRestaurantPicture : LiveData<String>
+        get() = _downloadRestaurantPicture
 
     private val firebaseService = FirebaseService()
 
@@ -82,5 +94,47 @@ class RestaurantPanelViewModel(application: Application) : AndroidViewModel(appl
 
     }
 
+    fun uploadPicture(uri: Uri){
+        val userID = firebaseService.restaurantFirebaseAuth.currentUser?.uid
+        val randomKey = UUID.randomUUID().toString()
+        val ref = firebaseService.storageReference.child("images/$randomKey")
 
+        ref.putFile(uri)
+            .addOnSuccessListener {
+                ref.downloadUrl.addOnSuccessListener {
+                    userID?.let { it1 ->
+                        firebaseService.db.collection("Restoranlar").document(it1).update("Logo", it.toString())
+                            .addOnSuccessListener {
+                                _restaurantPicture.postValue(uri)
+                            }
+                    }
+                }
+
+
+            }
+            .addOnFailureListener{
+
+            }
+    }
+
+
+    fun showPicture(){
+        val userID = firebaseService.restaurantFirebaseAuth.currentUser?.uid
+        val ref = userID?.let { firebaseService.db.collection("Restoranlar").document(it).get()
+            .addOnSuccessListener { documentSnapshot ->
+                if(documentSnapshot.get("Logo").toString() != "")
+                    _downloadRestaurantPicture.postValue(documentSnapshot.get("Logo").toString())
+                else
+                    _downloadRestaurantPicture.postValue("")
+            }
+
+
+
+
+
+        }
+
+
+
+    }
 }
