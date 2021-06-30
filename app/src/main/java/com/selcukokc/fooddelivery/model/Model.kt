@@ -1,5 +1,6 @@
 package com.selcukokc.fooddelivery.model
 
+import android.net.Uri
 import java.io.Serializable
 
 data class User(
@@ -26,7 +27,8 @@ data class Menu(
     val menuId : String?,
     val title : String?,
     val description: String?,
-    val price : Double?
+    val price : Double?,
+    val imageURL: String?
 ) : Serializable
 
 

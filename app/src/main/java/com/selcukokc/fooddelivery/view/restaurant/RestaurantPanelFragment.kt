@@ -17,12 +17,16 @@ import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantPanelBinding
 import com.selcukokc.fooddelivery.util.downloadFromUrl
 import com.selcukokc.fooddelivery.util.placeholderProgressBar
+import com.selcukokc.fooddelivery.view.BaseFragment
+import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantMenuPanelViewModel
 import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantPanelViewModel
 import java.net.URLDecoder
 
 
-class RestaurantPanelFragment : Fragment() {
 
+class RestaurantPanelFragment : BaseFragment() {
+
+    override var bottomNavigationViewVisibility = View.GONE
     private lateinit var restaurantPanelViewModel: RestaurantPanelViewModel
     private lateinit var binding: FragmentRestaurantPanelBinding
     private lateinit var imageUri: Uri
@@ -74,12 +78,8 @@ class RestaurantPanelFragment : Fragment() {
 
 
         restaurantPanelViewModel.restaurantInformationMutableLiveData.observe(viewLifecycleOwner, Observer{ restaurant->
-            if (restaurant != null) {
+            if (restaurant != null)
                 binding.txtName.text = restaurant.restaurantName.toString()
-
-            } else {
-                Log.e("ssss", "empty list")
-            }
 
         })
 

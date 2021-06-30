@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantLoginBinding
+import com.selcukokc.fooddelivery.view.BaseFragment
 import com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel.RestaurantLoginViewModel
 
 
 
-class RestaurantLoginFragment : Fragment() {
+class RestaurantLoginFragment : BaseFragment() {
 
+    override var bottomNavigationViewVisibility = View.GONE
     private lateinit var restaurantLoginViewModel: RestaurantLoginViewModel
     private lateinit var binding: FragmentRestaurantLoginBinding
 

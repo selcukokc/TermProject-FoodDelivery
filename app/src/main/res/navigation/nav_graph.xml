@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantListFragment"
-        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantListFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.RestaurantListFragment"
         android:label="Restoran Listesi"
         tools:layout="@layout/fragment_restaurant_list">
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurantDetailFragment"
-        android:name="com.selcukokc.fooddelivery.view.restaurant.RestaurantDetailFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.RestaurantDetailFragment"
         android:label="Restoran Anasayfa"
         tools:layout="@layout/fragment_restaurant_detail">
         <argument

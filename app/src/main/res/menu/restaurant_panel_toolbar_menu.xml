@@ -4,32 +4,33 @@
 
     <item
         android:id="@+id/itemHomepage"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="item2"
+        android:icon="@drawable/restaurant_homepage"
+        android:title="Anasayfa"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/itemMenus"
-        android:icon="@drawable/ic_baseline_restaurant_menu_24"
+        android:icon="@drawable/restaurant_menu"
         android:title="Menüler"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/itemProfile"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profil"
-        app:showAsAction="always" />
+
     <item
         android:id="@+id/itemNotifications"
-        android:icon="@drawable/ic_baseline_notifications_active_24"
-        android:title="Item"
+        android:icon="@drawable/restaurant_notification"
+        android:title="Bildirimler"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itemProfile"
+        android:icon="@drawable/restaurant_profile"
+        android:title="Profil"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/restaurant_logout"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"
-        android:title="itemLogout"
-        app:showAsAction="always"
-
+        android:icon="@drawable/restaurant_logout"
+        android:title="Çıkış Yap"
+        app:showAsAction="ifRoom"
         />
 
 </menu>

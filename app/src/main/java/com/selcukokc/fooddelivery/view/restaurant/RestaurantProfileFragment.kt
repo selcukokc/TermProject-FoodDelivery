@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantProfileBinding
+import com.selcukokc.fooddelivery.view.BaseFragment
 
-class RestaurantProfileFragment : Fragment() {
+class RestaurantProfileFragment : BaseFragment() {
+
+    override var bottomNavigationViewVisibility = View.GONE
     private lateinit var binding: FragmentRestaurantProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

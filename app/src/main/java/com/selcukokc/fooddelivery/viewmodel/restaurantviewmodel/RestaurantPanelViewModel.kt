@@ -3,11 +3,9 @@ package com.selcukokc.fooddelivery.viewmodel.restaurantviewmodel
 import android.app.Application
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.bumptech.glide.load.model.stream.UrlLoader
 import com.google.firebase.auth.FirebaseUser
 import com.selcukokc.fooddelivery.model.Restaurants
 import com.selcukokc.fooddelivery.service.FirebaseService
@@ -97,7 +95,7 @@ class RestaurantPanelViewModel(application: Application) : AndroidViewModel(appl
     fun uploadPicture(uri: Uri){
         val userID = firebaseService.restaurantFirebaseAuth.currentUser?.uid
         val randomKey = UUID.randomUUID().toString()
-        val ref = firebaseService.storageReference.child("images/$randomKey")
+        val ref = firebaseService.storageReference.child("restaurant_images/$randomKey")
 
         ref.putFile(uri)
             .addOnSuccessListener {
@@ -120,21 +118,16 @@ class RestaurantPanelViewModel(application: Application) : AndroidViewModel(appl
 
     fun showPicture(){
         val userID = firebaseService.restaurantFirebaseAuth.currentUser?.uid
-        val ref = userID?.let { firebaseService.db.collection("Restoranlar").document(it).get()
+        userID?.let { firebaseService.db.collection("Restoranlar").document(it).get()
             .addOnSuccessListener { documentSnapshot ->
-                if(documentSnapshot.get("Logo").toString() != "")
+                if(documentSnapshot.get("Logo").toString() != "") {
                     _downloadRestaurantPicture.postValue(documentSnapshot.get("Logo").toString())
+                }
                 else
                     _downloadRestaurantPicture.postValue("")
             }
 
-
-
-
-
         }
-
-
 
     }
 }
