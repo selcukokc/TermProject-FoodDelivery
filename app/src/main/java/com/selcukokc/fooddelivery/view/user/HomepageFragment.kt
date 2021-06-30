@@ -1,5 +1,6 @@
 package com.selcukokc.fooddelivery.view.user
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class HomepageFragment : BaseFragment() {
     override var bottomNavigationViewVisibility = View.VISIBLE
     private lateinit var homepageViewModel: HomepageViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +36,10 @@ class HomepageFragment : BaseFragment() {
 
         })
 
+        homepageViewModel.userInfoLiveData.observe(this, Observer {
+            binding.txtNameSurname.text = it.name + " " + it.surname
 
+        })
 
 
 
@@ -54,6 +59,7 @@ class HomepageFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        homepageViewModel.getUserInformation()
 
         binding.btnLogOut.setOnClickListener {
             homepageViewModel.logout()

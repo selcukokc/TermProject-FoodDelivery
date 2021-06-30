@@ -59,14 +59,14 @@ class RestaurantMenuPanelFragment : BaseFragment() {
 
         binding.menuList.layoutManager = LinearLayoutManager(context)
         binding.menuList.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
-        menuAdapter = context?.let { MenuAdapter(it, arrayListOf(),restaurantMenuPanelViewModel, viewLifecycleOwner) }!!
+        menuAdapter = context?.let { MenuAdapter(it, arrayListOf(),restaurantMenuPanelViewModel) }!!
 
         restaurantMenuPanelViewModel.showMenus()
 
         restaurantMenuPanelViewModel.restaurantMenuListMutableLiveData.observe(viewLifecycleOwner, Observer { list->
             if(list.isNotEmpty()) {
                 binding.txtEmptyMenu.visibility = View.INVISIBLE
-                menuAdapter = context?.let { MenuAdapter(it, list, restaurantMenuPanelViewModel, viewLifecycleOwner ) }!!
+                menuAdapter = context?.let { MenuAdapter(it, list, restaurantMenuPanelViewModel ) }!!
                 binding.menuList.adapter = menuAdapter
             } else {
                 binding.txtEmptyMenu.visibility = View.VISIBLE

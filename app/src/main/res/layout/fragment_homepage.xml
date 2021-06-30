@@ -21,29 +21,32 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/ic_baseline_person_24" />
+            app:srcCompat="@drawable/ic_baseline_person_24"
+          />
 
         <TextView
             android:id="@+id/txtNameSurname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
+            android:layout_marginStart="70dp"
             android:layout_gravity="center"
             android:text="Selçuk Okuyucu"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+           />
 
         <ImageButton
             android:id="@+id/btnLogOut"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:layout_gravity="center_vertical"
             android:background="@color/orange"
-            app:srcCompat="@drawable/ic_baseline_exit_to_app_24"
-            />
+            app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
 
     </LinearLayout>
 

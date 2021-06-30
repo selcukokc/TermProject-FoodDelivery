@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.CardDesignMenupanelBinding
@@ -26,7 +25,7 @@ interface OnClickImageListener{
 
 
 class MenuAdapter(private val mContext : Context, private val menuList: ArrayList<Menu>,
-                  private val restaurantMenuPanelViewModel : RestaurantMenuPanelViewModel, private val lifecycleOwner: LifecycleOwner)
+                  private val restaurantMenuPanelViewModel : RestaurantMenuPanelViewModel)
     : RecyclerView.Adapter<MenuAdapter.CardViewHolder>(), OnClickImageListener {
 
 
