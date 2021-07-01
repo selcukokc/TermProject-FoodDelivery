@@ -25,9 +25,8 @@ interface OnClickImageListener{
 
 
 class MenuAdapter(private val mContext : Context, private val menuList: ArrayList<Menu>,
-                  private val restaurantMenuPanelViewModel : RestaurantMenuPanelViewModel)
+                  private val restaurantMenuPanelViewModel : RestaurantMenuPanelViewModel?)
     : RecyclerView.Adapter<MenuAdapter.CardViewHolder>(), OnClickImageListener {
-
 
         inner class CardViewHolder(view : View) : RecyclerView.ViewHolder(view){
             val binding = CardDesignMenupanelBinding.bind(view)
@@ -89,11 +88,11 @@ class MenuAdapter(private val mContext : Context, private val menuList: ArrayLis
 
 
                     builder.setPositiveButton("GÜNCELLE") { _, _ ->
-                            restaurantMenuPanelViewModel.updateMenu(binding.menuID.text.toString(),
+                            restaurantMenuPanelViewModel?.updateMenu(binding.menuID.text.toString(),
                                 menuTitleEditText.text.toString(),
                                 menuDescEditText.text.toString(), menuPriceEditText.text.toString().toDouble())
 
-                        restaurantMenuPanelViewModel.showMenus()
+                        restaurantMenuPanelViewModel?.showMenus()
                     }
 
 
@@ -101,8 +100,8 @@ class MenuAdapter(private val mContext : Context, private val menuList: ArrayLis
 
 
                     builder.setNegativeButton("SİL") { _, _ ->
-                        restaurantMenuPanelViewModel.deleteMenu(binding.menuID.text.toString())
-                        restaurantMenuPanelViewModel.showMenus()
+                        restaurantMenuPanelViewModel?.deleteMenu(binding.menuID.text.toString())
+                        restaurantMenuPanelViewModel?.showMenus()
                     }
 
                     val dialog = builder.create();

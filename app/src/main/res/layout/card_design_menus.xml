@@ -20,85 +20,95 @@
 
             <TextView
                 android:id="@+id/txtMenuTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginRight="17dp"
                 android:text="Seçilmiş Menü (Dörtlü Fırsat Menüsü)"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/menu_img"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtMenuDesc"
-                android:layout_width="373dp"
+                android:layout_width="240dp"
                 android:layout_height="46dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="14dp"
-                android:text="4 Adet King Chicken® + King Boy Patates Kızartması + 12’li Soğan Halkası + 1 L. İçecek"
+                android:layout_marginEnd="17dp"
+                android:layout_marginRight="17dp"
+                android:text="sssssssssssss"
+                app:layout_constraintEnd_toStartOf="@+id/menu_img"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtMenuTitle" />
-
-            <ImageButton
-                android:id="@+id/imgBtnAdd"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="13dp"
-                android:background="#FFFFFF"
-                app:layout_constraintStart_toEndOf="@+id/txtNumberOfMenu"
-                app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc"
-                app:srcCompat="@drawable/ic_baseline_add_24" />
 
             <TextView
                 android:id="@+id/txtMenuPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginLeft="48dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="67dp"
+                android:layout_marginRight="67dp"
                 android:text="49.99 TL"
                 android:textColor="@color/green"
-                app:layout_constraintStart_toEndOf="@+id/imgBtnAdd"
+                app:layout_constraintEnd_toStartOf="@+id/btnAddToCart"
                 app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc" />
 
-            <TextView
-                android:id="@+id/txtNumberOfMenu"
-                android:layout_width="28dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="13dp"
+            <EditText
+                android:id="@+id/txtAmountOfMenu"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginRight="45dp"
                 android:gravity="center"
                 android:text="1"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/imgBtnAdd"
-                app:layout_constraintStart_toEndOf="@+id/imgBtnRemove"
+                app:layout_constraintEnd_toStartOf="@+id/txtMenuPrice"
                 app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc" />
-
-            <ImageButton
-                android:id="@+id/imgBtnRemove"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="13dp"
-                android:background="#fff"
-                app:layout_constraintEnd_toStartOf="@+id/txtNumberOfMenu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc"
-                app:srcCompat="@drawable/ic_baseline_remove_24" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnAddToCart"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="21dp"
                 android:layout_marginRight="21dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/rounded_background"
                 android:text="Ekle"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc" />
+
+            <ImageView
+                android:id="@+id/menu_img"
+                android:layout_width="114dp"
+                android:layout_height="111dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_fastfood_24" />
+
+            <TextView
+                android:id="@+id/txtAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="29dp"
+                android:layout_marginRight="29dp"
+                android:text="Miktar:"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtAmountOfMenu"
                 app:layout_constraintTop_toBottomOf="@+id/txtMenuDesc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,8 +55,8 @@
         android:label="Restoran Anasayfa"
         tools:layout="@layout/fragment_restaurant_detail">
         <argument
-            android:name="restaurant"
-            app:argType="com.selcukokc.fooddelivery.model.Restaurants" />
+            android:name="restaurantID"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"

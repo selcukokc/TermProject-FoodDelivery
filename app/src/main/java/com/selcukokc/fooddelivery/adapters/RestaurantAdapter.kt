@@ -1,6 +1,7 @@
 package com.selcukokc.fooddelivery.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.selcukokc.fooddelivery.R
 import com.selcukokc.fooddelivery.databinding.CardDesignRestaurantsBinding
 import com.selcukokc.fooddelivery.util.downloadFromUrl
 import com.selcukokc.fooddelivery.util.placeholderProgressBar
+import com.selcukokc.fooddelivery.view.user.HomepageFragmentDirections
 import com.selcukokc.fooddelivery.view.user.RestaurantListFragmentDirections
 
 
@@ -42,9 +44,17 @@ class RestaurantAdapter(private val mContext : Context, private val restaurantLi
                     it,
                     placeholderProgressBar(mContext))
             }
-
+            binding.restaurantID.text = restaurantList[position].restaurantId
             binding.txtCategoryName.text = restaurantList[position].category
 
+            binding.restaurantsCardView.setOnClickListener {
+                val action = RestaurantListFragmentDirections.
+                actionRestaurantListFragmentToRestaurantDetailFragment(holder.binding.restaurantID.text.toString())
+                Navigation.findNavController(it).navigate(action)
+
+              }
+
+            }
 
         }
 
@@ -54,4 +64,3 @@ class RestaurantAdapter(private val mContext : Context, private val restaurantLi
     }
 
 
-}
