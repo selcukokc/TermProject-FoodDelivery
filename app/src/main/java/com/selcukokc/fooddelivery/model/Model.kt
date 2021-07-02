@@ -31,6 +31,14 @@ data class Menu(
     val imageURL: String?
 ) : Serializable
 
+data class CartMenu(
+    val menuId : String,
+    val title : String,
+    val description: String,
+    val price : Double,
+    val amount: Int
+) : Serializable
+
 
 
 

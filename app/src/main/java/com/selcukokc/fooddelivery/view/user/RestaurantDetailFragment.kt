@@ -17,20 +17,23 @@ import com.selcukokc.fooddelivery.model.Menu
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantDetailBinding
 import com.selcukokc.fooddelivery.util.downloadFromUrl
 import com.selcukokc.fooddelivery.util.placeholderProgressBar
+import com.selcukokc.fooddelivery.viewmodel.userviewmodel.CartViewModel
 import com.selcukokc.fooddelivery.viewmodel.userviewmodel.RestaurantDetailViewModel
 
 
 class RestaurantDetailFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantDetailBinding
     private lateinit var restaurantDetailViewModel: RestaurantDetailViewModel
+    private lateinit var cartViewModel: CartViewModel
     private lateinit var menuAdapter: UserMenuAdapter
     private lateinit var restaurantID: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         restaurantDetailViewModel = ViewModelProvider(this).get(RestaurantDetailViewModel::class.java)
-
+        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
     }
 
@@ -46,9 +49,11 @@ class RestaurantDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.menuList.layoutManager = LinearLayoutManager(context)
         binding.menuList.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
-        menuAdapter = context?.let { UserMenuAdapter(it, arrayListOf()) }!!
+
+        menuAdapter = context?.let { UserMenuAdapter(it, arrayListOf(), cartViewModel) }!!
 
 
         arguments?.let {
@@ -97,7 +102,7 @@ class RestaurantDetailFragment : Fragment() {
 
 
         restaurantDetailViewModel.menuMutableLiveData.observe(viewLifecycleOwner, Observer { menulist ->
-            menuAdapter = context?.let { UserMenuAdapter(it, menulist) }!!
+            menuAdapter = context?.let { UserMenuAdapter(it, menulist, cartViewModel) }!!
             binding.menuList.adapter = menuAdapter
 
         })
