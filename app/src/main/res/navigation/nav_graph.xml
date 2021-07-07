@@ -67,7 +67,11 @@
         android:id="@+id/searchFragment"
         android:name="com.selcukokc.fooddelivery.view.user.SearchFragment"
         android:label="Ara"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.selcukokc.fooddelivery.view.user.CartFragment"
