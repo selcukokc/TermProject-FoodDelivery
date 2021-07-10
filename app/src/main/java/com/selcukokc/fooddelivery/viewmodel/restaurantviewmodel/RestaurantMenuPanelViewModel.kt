@@ -72,7 +72,7 @@ class RestaurantMenuPanelViewModel(applicaton : Application) : AndroidViewModel(
                         docRef.set(menuInfo)
                             .addOnSuccessListener {
                                 val menuID = docRef.id
-                                val menu = Menu(menuID, title, description, price, "")
+                                val menu = Menu(null, menuID, title, description, price, "")
                                 _addMenuMutableLiveData.postValue(menu)
                             }
                             .addOnFailureListener { e -> Log.w("Firebase", "Error writing document", e) }
@@ -97,7 +97,7 @@ class RestaurantMenuPanelViewModel(applicaton : Application) : AndroidViewModel(
                 .addOnSuccessListener { documents ->
 
                     for(document in documents){ 
-                        val menu = Menu(document.id ,document.get("Başlık").toString(),
+                        val menu = Menu(null ,document.id ,document.get("Başlık").toString(),
                             document.get("Detay").toString(), document.get("Fiyat").toString().toDouble(),
                             document.get("Görsel").toString())
                         menuArrayList.add(menu)

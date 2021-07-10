@@ -12,6 +12,7 @@ import com.selcukokc.fooddelivery.model.CartMenu
 import com.selcukokc.fooddelivery.model.Menu
 import com.selcukokc.fooddelivery.util.downloadFromUrl
 import com.selcukokc.fooddelivery.util.placeholderProgressBar
+import com.selcukokc.fooddelivery.view.user.RestaurantDetailFragmentArgs
 import com.selcukokc.fooddelivery.viewmodel.userviewmodel.CartViewModel
 
 
@@ -36,13 +37,14 @@ class UserMenuAdapter (private val mContext : Context, private val menuList: Arr
           binding.txtMenuDesc.text = menuList[position].description
           binding.txtMenuPrice.text = menuList[position].price.toString() + "TL"
           binding.menuID.text = menuList[position].menuId
+          binding.restaurantID.text = menuList[position].restaurantID
           menuList[position].imageURL?.let { binding.menuImg.downloadFromUrl(it, placeholderProgressBar(mContext)) }
 
           binding.btnAddToCart.setOnClickListener {
               val menuPrice = holder.binding.txtMenuPrice.text.
               removeRange(holder.binding.txtMenuPrice.text.length-2,binding.txtMenuPrice.text.length).toString().toDouble()
 
-              val menu = CartMenu(binding.menuID.text.toString(),holder.binding.txtMenuTitle.text.toString(),holder.binding.txtMenuDesc.text.toString(),
+              val menu = CartMenu(binding.restaurantID.text.toString(),binding.menuID.text.toString(),holder.binding.txtMenuTitle.text.toString(),holder.binding.txtMenuDesc.text.toString(),
                   menuPrice,binding.txtAmountOfMenu.text.toString().toInt())
               cartViewModel.addToCart(menu)
 

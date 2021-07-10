@@ -33,9 +33,10 @@ class CartAdapter(private val mContext: Context, private val menuList: ArrayList
            binding.menuID.text = menuList[position].menuId.toString()
            val totalPrice = menuList[position].price.toString().toDouble() * menuList[position].amount.toString().toDouble()
            binding.txtPrice.text = totalPrice.toString() + "TL"
+           binding.restaurantID.text = menuList[position].restaurantID
 
            binding.btnRemoveItem.setOnClickListener {
-               val menu = CartMenu(binding.menuID.text.toString(),binding.txtMenuTitle.text.toString(),binding.txtMenuDesc.text.toString()
+               val menu = CartMenu(binding.restaurantID.text.toString(), binding.menuID.text.toString(),binding.txtMenuTitle.text.toString(),binding.txtMenuDesc.text.toString()
                    ,totalPrice,binding.txtAmountOfMenu.text.toString().toInt())
                cartViewModel.removeFromCart(menu)
                cartViewModel.selectedMenus()

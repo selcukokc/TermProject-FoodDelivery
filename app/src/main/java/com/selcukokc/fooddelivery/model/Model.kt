@@ -24,6 +24,7 @@ data class Restaurants (
 ) : Serializable
 
 data class Menu(
+    val restaurantID: String?,
     val menuId : String?,
     val title : String?,
     val description: String?,
@@ -32,6 +33,7 @@ data class Menu(
 ) : Serializable
 
 data class CartMenu(
+    val restaurantID: String?,
     val menuId : String,
     val title : String,
     val description: String,
@@ -39,21 +41,23 @@ data class CartMenu(
     val amount: Int
 ) : Serializable
 
+data class OrderedMenu(
+    val menuTitle: String,
+    val menuAmount: Int,
+    val menuPrice: Double
+) : Serializable
 
+data class Order(
+    val restaurantID: String?,
+    val restaurantName: String,
+    val orderedMenuList: ArrayList<OrderedMenu>
+) : Serializable
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+data class Comment(
+    val userName: String,
+    val comment: String,
+    val rating: Double
+) : Serializable
 
 
 

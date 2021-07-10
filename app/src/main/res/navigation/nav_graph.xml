@@ -57,12 +57,10 @@
         <argument
             android:name="restaurantID"
             app:argType="string" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.selcukokc.fooddelivery.view.user.CategoriesFragment"
-        android:label="Kategoriler"
-        tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.selcukokc.fooddelivery.view.user.SearchFragment"
@@ -76,7 +74,11 @@
         android:id="@+id/cartFragment"
         android:name="com.selcukokc.fooddelivery.view.user.CartFragment"
         android:label="Sepet"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.selcukokc.fooddelivery.view.user.ProfileFragment"
@@ -85,7 +87,7 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.selcukokc.fooddelivery.view.FirstFragment"
-        android:label="Yemek Sipariş"
+        android:label="Yemek Sipariş Uygulaması"
         tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_firstFragment_to_loginFragment"
@@ -158,5 +160,14 @@
         <action
             android:id="@+id/action_restaurantRegisterFragment_to_restaurantPanelFragment"
             app:destination="@id/restaurantPanelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.selcukokc.fooddelivery.view.user.CommentsFragment"
+        android:label="Değerlendirmeler"
+        tools:layout="@layout/fragment_comments">
+        <argument
+            android:name="restaurantID"
+            app:argType="string" />
     </fragment>
 </navigation>

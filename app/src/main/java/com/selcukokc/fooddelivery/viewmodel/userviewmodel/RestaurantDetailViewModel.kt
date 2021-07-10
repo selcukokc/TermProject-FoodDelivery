@@ -41,7 +41,7 @@ class RestaurantDetailViewModel(application: Application) : AndroidViewModel(app
             .addOnSuccessListener { documents ->
 
                 for(document in documents){
-                    val menu = Menu(document.id ,document.get("Başlık").toString(),
+                    val menu = Menu(restaurantID, document.id ,document.get("Başlık").toString(),
                         document.get("Detay").toString(), document.get("Fiyat").toString().toDouble(),
                         document.get("Görsel").toString())
                     menuArrayList.add(menu)

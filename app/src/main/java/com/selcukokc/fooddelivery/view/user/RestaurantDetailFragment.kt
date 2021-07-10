@@ -1,7 +1,8 @@
 package com.selcukokc.fooddelivery.view.user
 
-import android.content.Context
+
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.selcukokc.fooddelivery.adapters.MenuAdapter
 import com.selcukokc.fooddelivery.adapters.UserMenuAdapter
-import com.selcukokc.fooddelivery.model.Menu
 import com.selcukokc.fooddelivery.databinding.FragmentRestaurantDetailBinding
 import com.selcukokc.fooddelivery.util.downloadFromUrl
 import com.selcukokc.fooddelivery.util.placeholderProgressBar
@@ -49,7 +48,6 @@ class RestaurantDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.menuList.layoutManager = LinearLayoutManager(context)
         binding.menuList.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
 
@@ -60,6 +58,11 @@ class RestaurantDetailFragment : Fragment() {
             restaurantID = RestaurantDetailFragmentArgs.fromBundle(it).restaurantID
             restaurantDetailViewModel.getDetailInfo(restaurantID)
             restaurantDetailViewModel.getMenus(restaurantID)
+        }
+
+        binding.imgComment.setOnClickListener {
+            val action = RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToCommentsFragment(restaurantID)
+            Navigation.findNavController(it).navigate(action)
         }
 
 
@@ -80,7 +83,6 @@ class RestaurantDetailFragment : Fragment() {
                 binding.menuList.visibility = View.GONE
                 binding.imgRestaurantLogo.visibility = View.GONE
                 binding.imgComment.visibility = View.GONE
-                binding.imgFavorite.visibility = View.GONE
                 binding.txtCategoryName.visibility = View.GONE
                 binding.txtRestaurantName.visibility = View.GONE
                 binding.txtRestaurantRating.visibility = View.GONE
@@ -90,7 +92,6 @@ class RestaurantDetailFragment : Fragment() {
                 binding.menuList.visibility = View.VISIBLE
                 binding.imgRestaurantLogo.visibility = View.VISIBLE
                 binding.imgComment.visibility = View.VISIBLE
-                binding.imgFavorite.visibility = View.VISIBLE
                 binding.txtCategoryName.visibility = View.VISIBLE
                 binding.txtRestaurantName.visibility = View.VISIBLE
                 binding.txtRestaurantRating.visibility = View.VISIBLE
